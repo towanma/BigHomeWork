@@ -1,8 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Show</router-link> |
+      <router-link to="/sch">Schoole</router-link>
+      |
+      <router-link to="/neo4j">Neo4j</router-link>
+      |
       <router-link to="/about">Echart</router-link>
+
     </div>
     <router-view/>
   </div>
