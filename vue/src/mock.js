@@ -230,3 +230,20 @@ let Result = [
 Mock.mock('/school','get',()=>{
     return Result
 })
+
+Mock.mock('/click','get',()=>{
+    let back =[
+        {
+            "lineid": 20,
+            "code": "4111010022",
+            "schoolname": "北京林业大学",
+            "province": "北京市",
+            "city": "北京市",
+            "department": "教育部",
+            "level": "本科",
+            "type": "211,一流学科",
+            "link": "http://www.bjfu.edu.cn/"
+        }
+    ]
+    return back
+})
