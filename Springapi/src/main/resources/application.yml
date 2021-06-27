@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.203.87.114:3306/softhomedb?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: JS0577js0577@
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml

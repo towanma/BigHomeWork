@@ -49,7 +49,7 @@
               <el-submenu index="1">
                 <template slot="title"><i class="el-icon-plus"></i>高校类型</template>
                 <el-menu-item class="clickDown" index ="1-1" @click.native="editHandle()" v-click-down>一流大学</el-menu-item>
-                <el-menu-item index="1-2">一流学科</el-menu-item>
+                <el-menu-item index="1-2" @click.native="getMenuTree()">一流学科</el-menu-item>
                 <el-menu-item index="1-3">985高校</el-menu-item>
                 <el-menu-item index="1-4">211高校</el-menu-item>
               </el-submenu>
