@@ -24,14 +24,14 @@ public class schoolController {
     @PostMapping("/pschool")
     @CrossOrigin
 //    public List<allschool> postInfo( HttpServletRequest request) {
-    public List<allschool> postInfo(@RequestParam String value,String key) {
-       // StringBuffer jsonStr = RequestUtil.getRequestURL(request);
-       // System.out.println(request);
-       // System.out.println(jsonStr);
-       // queryWrapper.in("city", Arrays.asList(School)).select("*");
+    public List<allschool> postInfo(@RequestParam String value, String key) {
+        // StringBuffer jsonStr = RequestUtil.getRequestURL(request);
+        // System.out.println(request);
+        // System.out.println(jsonStr);
+        // queryWrapper.in("city", Arrays.asList(School)).select("*");
 
-        QueryWrapper<allschool> queryWrapper =new QueryWrapper<>();
-         queryWrapper.like(key,value);
+        QueryWrapper<allschool> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like(key, value);
         return allSchoolMapper.selectList(queryWrapper);
     }
 
@@ -39,8 +39,8 @@ public class schoolController {
     @PostMapping("/pgch")
     @CrossOrigin
     public List<allschool> postGch(@RequestParam String value) {
-        QueryWrapper<allschool> queryWrapper =new QueryWrapper<>();
-        queryWrapper .and(wrapper -> wrapper.like("province",value).or().like("schoolname", value));
+        QueryWrapper<allschool> queryWrapper = new QueryWrapper<>();
+        queryWrapper.and(wrapper -> wrapper.like("province", value).or().like("schoolname", value));
         return allSchoolMapper.selectList(queryWrapper);
     }
 
@@ -52,25 +52,20 @@ public class schoolController {
         return allSchoolMapper.selectList(null);
     }
 
-    @GetMapping("/pag")
+    @PostMapping("/pag")
     @CrossOrigin
-    public schoolVo queryList(Integer current,Integer size,String schoolame){
-        schoolVo schoolVo =new schoolVo();
-        IPage<allschool> page = new Page<>(current,size);
-        QueryWrapper<allschool> queryWrapper =new QueryWrapper<>();
-        queryWrapper.like("schoolname",schoolame);
-        allSchoolMapper.selectPage(page,queryWrapper);
+    public schoolVo queryList(Integer current, Integer size, String schoolame) {
+        schoolVo schoolVo = new schoolVo();
+        IPage<allschool> page = new Page<>(current, size);
+        QueryWrapper<allschool> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("schoolname", schoolame);
+        allSchoolMapper.selectPage(page, queryWrapper);
         schoolVo.setCurrent(current);
         schoolVo.setSize(size);
         schoolVo.setTotal(page.getTotal());
         schoolVo.setAllschoolList(page.getRecords());
         return schoolVo;
     }
-
-
-
-
-
 
 
 }

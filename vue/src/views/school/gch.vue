@@ -30,9 +30,9 @@
         </el-row>
 
         <el-container style="border-radius: 4px; border: 1px solid #eee">
-          <el-aside width="200px" style="background-color: rgb(238, 241, 246);">
+          <el-aside  width="200px" style="background-color: rgb(238, 241, 246);">
 
-            //搜索菜单
+
 
             <el-autocomplete
                 v-model="state"
@@ -40,7 +40,10 @@
                 :trigger-on-focus="false"
                 @select="handleSelect"
                 placeholder="请输入内容"
-            ></el-autocomplete>
+            >
+              <el-button slot="append" icon="el-icon-search" @click.native="getSchooldata('1','10','青海')"></el-button>
+            </el-autocomplete>
+            <el-button type="primary" @click.native="getSchooldata('1','10','青海')">主要按钮</el-button>
 
           </el-aside>
           <el-container>
@@ -80,9 +83,9 @@
                   <el-pagination
                       background
                       :page-size="20"
-                      :pager-count="11"
+                      :pager-count=current
                       layout="prev, pager, next"
-                      :total="1000">
+                      :total=total>
                   </el-pagination>
                 </div></el-col>
               </el-row>
@@ -123,20 +126,18 @@ export default {
   data() {
     return {
       tableData: [],
-      tiname:'',
-
-      restaurants: [],
-      state: '',
-      timeout:  null
-
+      current:'',
+      size:'20',
+      total:''
     }
   },
 
   created() {
-    this.postSchooldata("type","985")
+   this.getSchooldata("1","20","北京")
+    //this.postSchooldata('schoolname','青海')
   },
   methods: {
-    postSchooldata(key, value,tname) {
+    postSchooldata(key,value,tname) {
       this.tiname = value
       let formData = new FormData
       formData.append("key", key)
@@ -150,8 +151,6 @@ export default {
     //     this.tableData = res.data
     //   })
     // },
-
-
 
     querySearchAsync(queryString,callback) {
       // var restaurants = this.restaurants;
@@ -174,22 +173,33 @@ export default {
       }).catch((error)=>{
         console.log(error);
       });
-
-
-
     },
-    // createStateFilter(queryString) {
-    //   return (state) => {
-    //     return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-    //   };
-    // },
+
     handleSelect(item) {
-      console.log(item);
+      console.log(item)
+    },
+    //current=1&size=100&schoolame=青海
+    getSchooldata(current,size,schoolame) {
+      this.tiname = schoolame
+      let for2mData = new FormData
+      for2mData.append('current', current)
+      for2mData.append('size', size)
+      for2mData.append('schoolame', schoolame)
+      this.$axios.post("http://10.203.87.121:8081/api/pag",for2mData).then(res => {
+        this.tableData = res.data.allschoolList
+        this.current = res.data.current
+        this.size = res.data.size
+        this.total = res.data.total
+      })
     }
-  },
-  // mounted() {
-  //   this.restaurants = this.loadAll();
-  // }
+
+
+
+
+  }//------------------methods.end
+
+
+
 };
 </script>
 
