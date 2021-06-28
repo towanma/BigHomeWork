@@ -10,7 +10,6 @@ import axios from 'axios'
 
 Vue.prototype.$axios=axios //设置全局axios 使用$axios用来使用axios库
 Vue.config.productionTip = false
-
 require("./mock.js")
 
 Vue.use(Element)

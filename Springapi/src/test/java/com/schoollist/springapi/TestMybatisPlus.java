@@ -21,7 +21,7 @@ public class TestMybatisPlus {
     public void testSelect(){
         System.out.println(("---------test------"));
         Map<String,Object> map = new HashMap<>() ;
-        map.put("level","本科");
+        map.put("type","%211%");
         List<allschool> allschoolList = allSchoolMapper.selectByMap(map);
         for(allschool allschool:allschoolList){
             System.out.println(allschool);

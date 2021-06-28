@@ -171,12 +171,13 @@ export default {
     }
   },
   created() {
-
+    //this.getMenuTree()
 
   },
   methods: {
     getMenuTree() {
-      this.$axios.get("/school").then(res => {
+      // /api/pschool  "/school"
+      this.$axios.post("http://localhost:8081/api/pschool",{"shchool":"10"}).then(res => {
         this.tableData = res.data
       })
     },
