@@ -20,25 +20,18 @@ public class schoolController {
     @PostMapping("/pschool")
     @CrossOrigin
 //    public List<allschool> postInfo( HttpServletRequest request) {
-    public List<allschool> postInfo(@RequestParam String School) {
+    public List<allschool> postInfo(@RequestParam String value,String key) {
        // StringBuffer jsonStr = RequestUtil.getRequestURL(request);
        // System.out.println(request);
        // System.out.println(jsonStr);
        // queryWrapper.in("city", Arrays.asList(School)).select("*");
 
         QueryWrapper<allschool> queryWrapper =new QueryWrapper<>();
-         queryWrapper.like("type",School);
+         queryWrapper.like(key,value);
         return allSchoolMapper.selectList(queryWrapper);
     }
 
-    @PostMapping("/test")
-    @CrossOrigin
 
-    public String test(@RequestParam String School) {
-        Requ requ = new Requ(School);
-        System.out.println(requ.getSchool());
-        return requ.getSchool();
-    }
 
     @GetMapping("/pschool")
     @CrossOrigin
