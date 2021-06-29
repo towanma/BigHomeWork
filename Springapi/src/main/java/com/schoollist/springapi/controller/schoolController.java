@@ -6,13 +6,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.schoollist.springapi.entity.allschool;
 import com.schoollist.springapi.entity.schoolVo;
 import com.schoollist.springapi.mapper.allSchoolMapper;
-import io.swagger.models.auth.In;
 import org.apache.catalina.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController

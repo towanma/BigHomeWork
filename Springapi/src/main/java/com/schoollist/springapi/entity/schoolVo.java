@@ -1,7 +1,6 @@
 package com.schoollist.springapi.entity;
 
 import lombok.Data;
-
 import java.util.List;
 
 @Data
