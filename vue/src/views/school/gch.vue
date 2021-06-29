@@ -32,15 +32,12 @@
 
         <el-container style="border-radius: 4px; border: 1px solid #eee">
           <el-aside width="200px" style="background-color: rgb(238, 241, 246);">
-
-
             <el-autocomplete
                 v-model="state"
                 :fetch-suggestions="querySearchAsync"
                 :trigger-on-focus="false"
                 @select="handleSelect"
-                placeholder="请输入内容"
-            >
+                placeholder="请输入内容">
               <el-button slot="append" icon="el-icon-search" @click.native="getSchooldata('1','20',state)"></el-button>
             </el-autocomplete>
           </el-aside>
@@ -55,7 +52,6 @@
 <!--                      <h1>{{ current }}</h1>-->
 <!--                      <h1>{{ size }}</h1>-->
 <!--                      <h1>{{ total }}</h1>-->
-
                     </el-row>
                   </div>
                 </el-col>
@@ -85,10 +81,6 @@
                   <div class="grid-content"></div>
                 </el-col>
               </el-row>
-
-
-
-
                   <div class="grid-content">
                     <el-pagination class="elpg"
                                    background
@@ -102,30 +94,18 @@
                                    :total=total>
                     </el-pagination>
                   </div>
-
-
-
               <el-container>
-
               </el-container>
-
-
             </el-main>
-
           </el-container>
         </el-container>
       </el-col>
-
       <el-col :span="4">
         <div class="grid-content"></div>
       </el-col>
-
     </el-row>
-
   </div>
-
 </template>
-
 <script>
 
 // @ is an alias to /src
@@ -176,13 +156,6 @@ export default {
     // },
 
     querySearchAsync(queryString, callback) {
-      // var restaurants = this.restaurants;
-      // var results = queryString ? restaurants.filter(this.createStateFilter(queryString)) : restaurants;
-      // clearTimeout(this.timeout);
-      // this.timeout = setTimeout(() => {
-      //   cb(results);
-      // }, 3000 * Math.random());
-
       var list = [{}];
       let formData = new FormData
       formData.append("value", queryString)
@@ -201,7 +174,6 @@ export default {
     handleSelect(item) {
       console.log(item)
     },
-    //current=1&size=100&schoolame=青海
     getSchooldata(current, size, schoolame) {
       this.tempname = schoolame
       this.tiname = schoolame
@@ -215,15 +187,11 @@ export default {
         this.size = res.data.size
         this.total = res.data.total
       })
-
     },
-
-
     current_change:function (currentpage){
       this.current=currentpage
       this.getSchooldata(this.current,this.size,this.tempname)
     }
-
   }//------------------methods.end
 
 
