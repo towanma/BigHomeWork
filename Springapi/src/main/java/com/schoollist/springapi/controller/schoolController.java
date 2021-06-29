@@ -25,11 +25,6 @@ public class schoolController {
     @CrossOrigin
 //    public List<allschool> postInfo( HttpServletRequest request) {
     public List<allschool> postInfo(@RequestParam String value, String key) {
-        // StringBuffer jsonStr = RequestUtil.getRequestURL(request);
-        // System.out.println(request);
-        // System.out.println(jsonStr);
-        // queryWrapper.in("city", Arrays.asList(School)).select("*");
-
         QueryWrapper<allschool> queryWrapper = new QueryWrapper<>();
         queryWrapper.like(key, value);
         return allSchoolMapper.selectList(queryWrapper);
