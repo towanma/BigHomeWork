@@ -31,10 +31,12 @@
 
         <el-container style="border-radius: 4px; border: 1px solid #eee">
           <el-aside width="200px" style="background-color: rgb(238, 241, 246);"><el-scrollbar>
-            <el-menu :default-openeds="['1','2']" >
+            <el-menu :default-openeds="['1','2']"
+                     active-text-color="#ffd04b"
+            >
 
               <el-submenu index="1">
-                <template slot="title"><i class="el-icon-plus"></i>高校类型</template>
+                <template slot="title" ><i class="el-icon-plus"></i><b>高校类型</b></template>
                 <el-menu-item class="clickDown" index="1-1" @click.native="postSchooldata('type','一流大学','一流大学')" v-click-down>
                   一流大学</el-menu-item>
                 <el-menu-item index="1-2" @click.native="postSchooldata('type','一流学科','一流学科')">一流学科</el-menu-item>
@@ -43,7 +45,7 @@
               </el-submenu>
 
               <el-submenu index="2">
-                <template slot="title"><i class="el-icon-plus"></i>所在地区</template>
+                <template slot="title"><i class="el-icon-plus"></i><b>所在地区</b></template>
                 <el-menu-item index="2-1" @click.native="postSchooldata('province','北京市')">北京市</el-menu-item>
                 <el-menu-item index="2-2" @click.native="postSchooldata('province','四川省')">四川省</el-menu-item>
                 <el-menu-item index="2-3" @click.native="postSchooldata('province','天津市')">天津市</el-menu-item>
@@ -183,6 +185,10 @@ export default {
 
 body {
   margin: 0;
+}
+.el-menu-item.is-active {
+  background-color: rgb(51, 83, 184) !important;
+
 }
 
 </style>
